@@ -98,6 +98,27 @@ def generate(tokens):
                 "pop %r13",         
                 "pop %r14",
             ])
+        elif token == 'dup':
+           output.extend([
+               "# dup op",
+               "mov (%rbx), %rax",  
+               "sub $8, %rbx",      
+               "mov %rax, (%rbx)"   
+           ])
+
+        elif token == 'swap':
+            output.extend([
+                "# swap op",
+                "mov (%rbx), %rax",       
+                "mov 8(%rbx), %rcx",      
+                "mov %rcx, (%rbx)",       
+                "mov %rax, 8(%rbx)"       
+            ])
+        elif token == 'drop':
+            output.extend([
+                "# drop op",
+                "add $8, %rbx" 
+            ])
         output.append("")
     
     output.extend([

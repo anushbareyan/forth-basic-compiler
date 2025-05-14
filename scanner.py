@@ -1,5 +1,5 @@
 def scan(filename):
-    valid_operators = {'+', '-', '*', '/', '.',".s"}
+    valid_operators = {'+', '-', '*', '/', '.',".s","dup","swap","drop"}
     tokens = []
     try:
         with open(filename, 'r') as f:
